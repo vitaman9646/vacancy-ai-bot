@@ -1,0 +1,45 @@
+#Env
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Telegram sessions
+*.session
+*.session-journal
+
+# Logs
+*.log
+logs/
+
+# n8n workflows (локальные)
+workflows/*.json
+!workflows/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+credentials/
+secrets/
