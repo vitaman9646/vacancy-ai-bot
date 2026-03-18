@@ -11,43 +11,53 @@ from src.parsers.kadrout import KadroutParser
 
 
 async def main():
-    print("🧪 Тест парсера kadrout.ru\n")
+    print("=" * 60)
+    print("🧪 ТЕСТ ПАРСЕРА KADROUT.RU")
+    print("=" * 60)
+    print("")
     
-    parser = KadroutParser(headless=False)  # С UI для отладки
+    # Создаём парсер (с UI для отладки)
+    parser = KadroutParser(headless=False)
     
     try:
         # 1. Тест списка вакансий
         print("1️⃣ Получение списка вакансий...")
+        print("")
+        
         vacancies = await parser.fetch_vacancies(limit=5)
         
-        print(f"\n✅ Найдено: {len(vacancies)} вакансий\n")
+        print(f"✅ Найдено: {len(vacancies)} вакансий\n")
         
         for i, vac in enumerate(vacancies, 1):
             print(f"📌 {i}. {vac.title}")
             print(f"   💰 {vac.salary_min or '?'} - {vac.salary_max or '?'} {vac.salary_currency}")
             print(f"   🔗 {vac.link}")
             print(f"   📝 {vac.raw_text[:100]}...")
-            print()
+            print("")
         
         # 2. Тест детальной страницы
         if vacancies:
-            print("\n2️⃣ Получение деталей первой вакансии...\n")
+            print("\n2️⃣ Получение деталей первой вакансии...")
+            print("")
+            
             details = await parser.fetch_vacancy_details(vacancies[0].link)
             
             if details:
-                print(f"✅ Детали получены:")
-                print(f"   Заголовок: {details.title}")
-                print(f"   Компания: {details.company}")
-                print(f"   Локация: {details.location}")
-                print(f"   Тип: {details.employment_type}")
-                print(f"   Описание ({len(details.description)} симв.):")
-                print(f"   {details.description[:300]}...")
+                print("✅ Детали получены:")
+                print(f"   📌 Заголовок: {details.title}")
+                print(f"   🏢 Компания: {details.company or 'не указана'}")
+                print(f"   📍 Локация: {details.location or 'не указана'}")
+                print(f"   💼 Тип: {details.employment_type}")
+                print(f"   📝 Описание ({len(details.description)} симв.):")
+                print(f"      {details.description[:300]}...")
             else:
                 print("❌ Не удалось получить детали")
     
     finally:
         parser._close_driver()
-        print("\n✅ Тест завершён")
+        print("\n" + "=" * 60)
+        print("✅ Тест завершён")
+        print("=" * 60)
 
 
 if __name__ == '__main__':
