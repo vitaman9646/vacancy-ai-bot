@@ -1,4 +1,4 @@
-#Env
+# Environment
 .env
 *.env
 !.env.example
@@ -9,24 +9,47 @@ __pycache__/
 *$py.class
 *.so
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 venv/
 env/
 ENV/
+env.bak/
+venv.bak/
 
 # Database
 *.db
 *.sqlite
 *.sqlite3
+vacancies.db
+*.db-journal
 
 # Telegram sessions
 *.session
 *.session-journal
+monitor_session.*
+test_session.*
 
 # Logs
 *.log
 logs/
+*.log.*
 
-# n8n workflows (локальные)
+# n8n workflows (generated)
 workflows/*.json
 !workflows/.gitkeep
 
@@ -35,11 +58,31 @@ workflows/*.json
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
+.Spotlight-V100
+.Trashes
+
+# Selenium
+geckodriver.log
+chromedriver.log
 
 # Secrets
 credentials/
 secrets/
+backup/
+*.key
+*.pem
+
+# Debug files
+*.html
+debug_*.txt
+page_source_*.html
+
+# Temporary
+tmp/
+temp/
+*.tmp
